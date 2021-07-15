@@ -12,8 +12,6 @@ const isProduction = environment === 'production';
 
 const app = express();
 
-app.use(routes);
-
 app.use(morgan('dev'));
 
 app.use(cookieParser());
@@ -38,6 +36,10 @@ app.use(
             httpOnly: true,
         },
     })
-)
+    )
+    
+app.use(routes);
+
+
 
 module.exports = app;
