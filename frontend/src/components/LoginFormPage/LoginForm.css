@@ -1,4 +1,9 @@
-.login-container {
+#login-container {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-field {
+    box-sizing: border-box;
 }
