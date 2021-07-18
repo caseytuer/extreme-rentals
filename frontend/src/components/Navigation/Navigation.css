@@ -1,4 +1,38 @@
 .navbar-container {
     display: flex;
+    width: 100%;
+    align-items: center;
     justify-content: space-between;
+    border-bottom: 1px solid #8DCAFF;
+    margin-bottom: 5em;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    background-color: white;
+}
+
+.logo-img {
+    max-height: 80px;
+}
+
+.login-and-signup-btns {
+    margin: 1em;
+    display: flex;
+    flex-flow: nowrap;
+    justify-content: space-between;
+}
+
+#search-bar {
+    width: 50rem;
+    border: .5px solid #8DCAFF;
+    padding: 0.5rem;
+    font-size: 15px;
+}
+
+#search-bar:hover {
+    border: 3px solid #8DCAFF;
+}
+
+.login-btn {
+    margin-right: 20px;
 }

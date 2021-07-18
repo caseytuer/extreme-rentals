@@ -29,7 +29,7 @@ function SignupFormPage() {
     };
 
     return (
-        <div >
+        <div id="signup-form-container">
             <form onSubmit={handleSubmit}>
                 <ul>
                     {errors.map((error, idx) => <li key={idx}>{error}</li>)}
@@ -38,7 +38,8 @@ function SignupFormPage() {
                     <div className="signup-field">
                         <label>
                             <input
-                            placeholder="Email"
+                                className="form-input"
+                                placeholder="Email"
                                 type="text"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
@@ -49,7 +50,8 @@ function SignupFormPage() {
                     <div className="signup-field">
                         <label>
                             <input
-                            placeholder="Username"
+                                className="form-input"
+                                placeholder="Username"
                                 type="text"
                                 value={username}
                                 onChange={(e) => setUsername(e.target.value)}
@@ -60,7 +62,8 @@ function SignupFormPage() {
                     <div className="signup-field">
                         <label>
                             <input
-                            placeholder="Password"
+                                className="form-input"
+                                placeholder="Password"
                                 type="password"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
@@ -71,7 +74,8 @@ function SignupFormPage() {
                     <div className="signup-field">
                         <label>
                             <input
-                            placeholder="Confirm Password"
+                                className="form-input"
+                                placeholder="Confirm Password"
                                 type="password"
                                 value={confirmPassword}
                                 onChange={(e) => setConfirmPassword(e.target.value)}
@@ -80,7 +84,7 @@ function SignupFormPage() {
                         </label>
                     </div>
                     <div className="signup-field signup-btn">
-                        <button type="submit">Sign Up</button>
+                        <button className="form-btn" type="submit">Sign Up</button>
                     </div>
                 </div>
             </form>
