@@ -1,15 +1,31 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
-const { Listing, User, Image } = require('../../db/models');
+const { Rental} = require('../../db/models');
 
 const router = express.Router();
 
-// GET /api/listings/:id <<--- Get the listing by its ID
-router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
-    const listingId = parseInt(req.params.id, 10);
-    const listing = await Listing.findByPk(listingId,
-        { include: [User, Image] });
-    return res.json(listing);
+
+router.get('', asyncHandler(async (req, res) => {
+    const rentals = await Rental.findAll();
+    res.json(rentals);
+}));
+
+
+router.post('/create', asyncHandler(async (req, res) => {
+    const { userId, address, city, state, country, lat, lng, name, description, price } = req.body;
+    const rental = await Rental.create({
+        userId,
+        address,
+        city,
+        state,
+        country,
+        lat,
+        lng,
+        name,
+        description,
+        price
+    });
+    return res.json({ rental });
 }));
 
 module.exports = router;

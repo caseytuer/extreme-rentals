@@ -1,44 +1,39 @@
 import { csrfFetch } from "./csrf";
 
-const LOAD = 'rentals/LOAD';
+const SET_RENTALS = 'rentals/SetRentals';
 
-
-const load = rental => ({
-    type: LOAD,
-    rental
+const setRentals = (rentals) => ({
+    type: SET_RENTALS,
+    rentals
 })
 
 
 export const getRentals = () => async (dispatch) => {
-    const response = await csrfFetch('');
-
-    if (response.ok) {
-        const rental = await response.json();
-        dispatch(load(rental));
-        return rental;
-    };
+    const res = await csrfFetch('/api/rentals');
+    const rentals = await res.json();
+    dispatch(setRentals(rentals));
 };
 
-export const getRentalById = (id) => async (dispatch) => {
-    const response = await csrfFetch(`/api/rentals/${id}`);
+// export const getRentalById = (id) => async (dispatch) => {
+//     const response = await csrfFetch(`/api/rentals/${id}`);
 
-    if (response.ok) {
-        const rental = await response.json();
-        dispatch(load(rental));
-        return rental;
-    };
-};
+//     if (response.ok) {
+//         const rental = await response.json();
+//         dispatch(load(rental));
+//         return rental;
+//     };
+// };
 
 
 const initialState = {};
 
-const rentalReducer = (state = initialState, action) => {
+const rentalsReducer = (state = initialState, action) => {
     switch (action.type) {
-        case LOAD:
-            return action.rental; 
+        case SET_RENTALS:
+            return { ...state, ...Object.fromEntries(action.rentals.map((rental) => [rental.id, rental])) };
         default:
             return state;
     };
 };
 
-export default rentalReducer;
+export default rentalsReducer;
