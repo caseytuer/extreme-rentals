@@ -11,7 +11,14 @@ function Navigation({ isLoaded }) {
     let sessionLinks;
     if (sessionUser) {
         sessionLinks = (
-            <ProfileButton user={sessionUser} />
+            <>
+                <div>
+                    <NavLink className="login-btn" to="/rentals/new">Become an Extremist</NavLink>
+                </div>
+                <div>
+                    <ProfileButton  user={sessionUser} />
+                </div>
+            </>
         );
     } else {
         sessionLinks = (
@@ -33,7 +40,7 @@ function Navigation({ isLoaded }) {
                     <div className="navbar-container">
                         <div className="home-btn">
                             <NavLink exact to="/" >
-                                <a class="logo" href="/#"><img className="logo-img" src="https://i.ibb.co/DQ5q7yH/logo.png" alt=""></img></a>
+                                <img className="logo-img" src="https://i.ibb.co/DQ5q7yH/logo.png" alt=""></img>
                             </NavLink>
                         </div>
                         <div >

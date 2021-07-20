@@ -60,6 +60,52 @@ module.exports = {
         username: 'catLady',
         hashedPassword: bcrypt.hashSync('password'),
       },
+      {
+        email: 'green@man.com',
+        username: 'greenMan',
+        hashedPassword: bcrypt.hashSync('password'),
+      },
+      {
+        email: 'psychoPeete@crazy.com',
+        username: 'psychoPeete',
+        hashedPassword: bcrypt.hashSync('password'),
+      },
+      {
+        email: 'nikkiPotnick@gmail.com',
+        username: 'nikkiP',
+        hashedPassword: bcrypt.hashSync('password'),
+      },
+      {
+        email: 'thundergun@express.com',
+        username: 'thunderGun',
+        hashedPassword: bcrypt.hashSync('password'),
+      },
+      {
+        email: 'padresFan@gmail.com',
+        username: 'PadresFan1904',
+        hashedPassword: bcrypt.hashSync('password'),
+      },
+      {
+        email: 'Tatis@padres.com',
+        username: 'TatisJr',
+        hashedPassword: bcrypt.hashSync('password'),
+      },
+      {
+        email: 'mmachado@padres.com',
+        username: 'MannyMachado',
+        hashedPassword: bcrypt.hashSync('password'),
+      },
+      {
+        email: 'willmyers@padres.com',
+        username: 'WillMyers',
+        hashedPassword: bcrypt.hashSync('password'),
+      },
+      {
+        email: 'trentGrisham@padres.com',
+        username: 'TrentGrisham',
+        hashedPassword: bcrypt.hashSync('password'),
+      },
+
     ], {});
   },
 

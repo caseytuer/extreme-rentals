@@ -43,6 +43,20 @@ router.post(
     }),
 );
 
+// demo login
+// router.post(
+//     '/',
+//     asyncHandler(async (req, res, next) => {
+//         const user = await User.login({ credential: 'Demo-extremist', password: 'password' })
+
+//         await setTokenCookie(res, user);
+
+//         return res.json({
+//             user,
+//         });
+//     }),
+// );
+
 // logout
 router.delete(
     '/',

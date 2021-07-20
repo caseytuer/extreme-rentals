@@ -30,6 +30,19 @@ export const login = (user) => async (dispatch) => {
     return response;
 };
 
+// export const demoLogin = () => async (dispatch) => {
+//     const response = await csrfFetch('/api/session', {
+//         method: 'POST',
+//         body: JSON.stringify({
+//             credential: 'Demo-extremist',
+//             password: 'password',
+//         }),
+//     });
+//     const data = await response.json();
+//     dispatch(setUser(data.user));
+//     return response;
+// }
+
 export const restoreUser = () => async dispatch => {
     const response = await csrfFetch('/api/session');
     const data = await response.json();
@@ -77,5 +90,30 @@ const sessionReducer = (state = initialState, action) => {
             return state;
     }
 };
+
+const ADD_RENTAL = 'rentals/RENTAL';
+
+const addRental = rental => ({
+    type: ADD_RENTAL,
+    rental,
+});
+
+export const createRental = data => async dispatch => {
+    const response = await fetch('/api/rentals', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    });
+
+    if (response.ok) {
+        const rental = await response.json();
+        dispatch(addRental(rental));
+        return rental
+    }
+
+
+}
 
 export default sessionReducer;
