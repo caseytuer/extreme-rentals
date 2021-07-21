@@ -39,42 +39,33 @@ const EditRentalForm = () => {
         dispatch(getRentals());
     }, [dispatch])
 
-    console.log(currentRental)
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        const edited = dispatch(editRental(currentRental))
-        if (edited) {
-            history.push(`/rentals/${currentRental?.id}`);
+
+        const rentalEdited = dispatch(rentalActions.editRental({
+            id: currentRental.id,
+            userId,
+            address,
+            city,
+            state,
+            country,
+            lat,
+            lng,
+            name,
+            description,
+            price
+        }))
+            .catch(async (res) => {
+                const data = await res.json();
+                if (data && data.errors) setErrors(data.errors);
+            });
+
+        if (rentalEdited) {
+            history.push(`/`)
         }
+
     }
-   
-
-    // const handleSubmit = async (e) => {
-    //     e.preventDefault();
-
-    //     const rentalEdited = dispatch(rentalActions.editRental({
-    //         userId,
-    //         address,
-    //         city,
-    //         state,
-    //         country,
-    //         lat,
-    //         lng,
-    //         name,
-    //         description,
-    //         price
-    //     }))
-    //         .catch(async (res) => {
-    //             const data = await res.json();
-    //             if (data && data.errors) setErrors(data.errors);
-    //         });
-
-    //     if (rentalEdited) {
-    //         history.push(`/`)
-    //     }
-
-    // }
 
 
     return (
