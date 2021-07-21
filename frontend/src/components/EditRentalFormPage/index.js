@@ -3,54 +3,79 @@ import { useDispatch, useSelector } from "react-redux";
 import * as sessionActions from "../../store/session";
 import * as rentalActions from "../../store/rentals";
 import * as imageActions from "../../store/images";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
+import { getRentals } from "../../store/rentals";
+import { getImages } from "../../store/images";
+import { editRental } from "../../store/rentals";
 
 
-function NewRentalForm() {
-    const history = useHistory();
-    const sessionUser = useSelector((state) => state.session.user);
+const EditRentalForm = () => {
+
+    const { id } = useParams();
     const dispatch = useDispatch();
-    const [address, setAddress] = useState("");
-    const [city, setCity] = useState("");
-    const [state, setState] = useState("");
-    const [country, setCountry] = useState("");
-    const [lat, setLat] = useState('');
-    const [lng, setLng] = useState('');
-    const [name, setName] = useState("");
-    const [description, setDescription] = useState("");
-    const [price, setPrice] = useState("");
+    const history = useHistory();
+    
+    const sessionUser = useSelector((state) => state.session.user);
+    const currentRental = useSelector(state => state.rentals[id]);
+
+    console.log(currentRental)
+
+    const [address, setAddress] = useState(currentRental?.address);
+    const [city, setCity] = useState(currentRental?.city);
+    const [state, setState] = useState(currentRental?.state);
+    const [country, setCountry] = useState(currentRental?.country);
+    const [lat, setLat] = useState(currentRental?.lat);
+    const [lng, setLng] = useState(currentRental?.lng);
+    const [name, setName] = useState(currentRental?.name);
+    const [description, setDescription] = useState(currentRental?.description);
+    const [price, setPrice] = useState(currentRental?.price);
     const [errors, setErrors] = useState([]);
     const [userId, setUserId] = useState(sessionUser?.id);
-    // const [imgUrl, setImgUrl] = useState('');
+    // const [imgUrl, setImgUrl] = useState(currentRental?.);
 
-   
-    
-    const handleSubmit = async (e) => {
+
+
+    useEffect(() => {
+        dispatch(getRentals());
+    }, [dispatch])
+
+    console.log(currentRental)
+
+    const handleSubmit = (e) => {
         e.preventDefault();
-        
-        const rentalCreated = dispatch(rentalActions.createRental({ 
-                userId,
-                address,
-                city,
-                state, 
-                country,
-                lat,
-                lng,
-                name,
-                description,
-                price
-        }))
-            .catch(async (res) => {
-                const data = await res.json();
-                if (data && data.errors) setErrors(data.errors);
-            });
-
-            if (rentalCreated) {
-                history.push(`/`)
-            }
-                
+        const edited = dispatch(editRental(currentRental))
+        if (edited) {
+            history.push(`/rentals/${currentRental?.id}`);
+        }
     }
-    
+   
+
+    // const handleSubmit = async (e) => {
+    //     e.preventDefault();
+
+    //     const rentalEdited = dispatch(rentalActions.editRental({
+    //         userId,
+    //         address,
+    //         city,
+    //         state,
+    //         country,
+    //         lat,
+    //         lng,
+    //         name,
+    //         description,
+    //         price
+    //     }))
+    //         .catch(async (res) => {
+    //             const data = await res.json();
+    //             if (data && data.errors) setErrors(data.errors);
+    //         });
+
+    //     if (rentalEdited) {
+    //         history.push(`/`)
+    //     }
+
+    // }
+
 
     return (
         <div id="signup-form-container">
@@ -63,7 +88,7 @@ function NewRentalForm() {
                         <label>
                             <input
                                 className="form-input"
-                                placeholder="Address"
+                                placeholder={currentRental?.address}
                                 type="text"
                                 value={address}
                                 onChange={(e) => setAddress(e.target.value)}
@@ -75,7 +100,7 @@ function NewRentalForm() {
                         <label>
                             <input
                                 className="form-input"
-                                placeholder="City"
+                                placeholder={currentRental?.city}
                                 type="text"
                                 value={city}
                                 onChange={(e) => setCity(e.target.value)}
@@ -87,7 +112,7 @@ function NewRentalForm() {
                         <label>
                             <input
                                 className="form-input"
-                                placeholder="State"
+                                placeholder={currentRental?.state}
                                 type="text"
                                 value={state}
                                 onChange={(e) => setState(e.target.value)}
@@ -99,7 +124,7 @@ function NewRentalForm() {
                         <label>
                             <input
                                 className="form-input"
-                                placeholder="Country"
+                                placeholder={currentRental?.country}
                                 type="text"
                                 value={country}
                                 onChange={(e) => setCountry(e.target.value)}
@@ -111,7 +136,7 @@ function NewRentalForm() {
                         <label>
                             <input
                                 className="form-input"
-                                placeholder="Latitude"
+                                placeholder={currentRental?.lat}
                                 type="text"
                                 value={lat}
                                 onChange={(e) => setLat(e.target.value)}
@@ -123,7 +148,7 @@ function NewRentalForm() {
                         <label>
                             <input
                                 className="form-input"
-                                placeholder="Longitude"
+                                placeholder={currentRental?.lng}
                                 type="text"
                                 value={lng}
                                 onChange={(e) => setLng(e.target.value)}
@@ -135,7 +160,7 @@ function NewRentalForm() {
                         <label>
                             <input
                                 className="form-input"
-                                placeholder="Item Name"
+                                placeholder={currentRental?.name}
                                 type="text"
                                 value={name}
                                 onChange={(e) => setName(e.target.value)}
@@ -147,7 +172,7 @@ function NewRentalForm() {
                         <label>
                             <input
                                 className="form-input"
-                                placeholder="Description"
+                                placeholder={currentRental?.description}
                                 type="text"
                                 value={description}
                                 onChange={(e) => setDescription(e.target.value)}
@@ -159,7 +184,7 @@ function NewRentalForm() {
                         <label>
                             <input
                                 className="form-input"
-                                placeholder="Price Per Day"
+                                placeholder={currentRental?.price}
                                 type="text"
                                 value={price}
                                 onChange={(e) => setPrice(e.target.value)}
@@ -180,7 +205,7 @@ function NewRentalForm() {
                         </label>
                     </div> */}
                     <div className="signup-field signup-btn">
-                        <button className="form-btn" type="submit">Post Rental</button>
+                        <button className="form-btn" type="submit">Edit Rental</button>
                     </div>
                 </div>
             </form>
@@ -188,4 +213,4 @@ function NewRentalForm() {
     );
 }
 
-export default NewRentalForm;
+export default EditRentalForm;

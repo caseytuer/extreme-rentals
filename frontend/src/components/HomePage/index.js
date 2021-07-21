@@ -29,7 +29,7 @@ const HomePage = () => {
 
     
         <div id="browse-card-container">
-                {rentals.map((rental) => {
+                {rentals?.map((rental) => {
                     const rentalImages = images.find(image => image.rentalId === rental.id);
                     return (
                         <Link to={`/rentals/${rental.id}`} className="browse-card">

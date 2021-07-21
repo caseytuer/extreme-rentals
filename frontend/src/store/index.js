@@ -9,8 +9,8 @@ import imagesReducer from './images';
 export const rootReducer = combineReducers({
     session: sessionReducer,
     rentals: rentalsReducer,
-    users: usersReducer,
     images: imagesReducer,
+    users: usersReducer,
 });
 
 let enhancer;

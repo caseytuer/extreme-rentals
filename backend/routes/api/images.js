@@ -11,5 +11,13 @@ router.get('', asyncHandler(async (req, res) => {
 }));
 
 
+router.post('', asyncHandler(async (req, res) => {
+    const { rentalId, url } = req.body;
+    const image = await Image.create({
+        rentalId,
+        url,
+    });
+    return res.json({ image });
+}));
 
 module.exports = router;

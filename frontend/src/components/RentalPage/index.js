@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from "react-router-dom";
-import { getRentalById } from "../../store/rentals";
+import { useHistory, useParams } from "react-router-dom";
+import { cancelRental, editRental } from "../../store/rentals";
 import { getRentals } from "../../store/rentals";
 import { getImages } from "../../store/images";
 import './RentalPage.css';
@@ -9,21 +9,40 @@ import './RentalPage.css';
 const RentalPage = () => {
 
     const {id} = useParams();
-    
-    // const rentals = useSelector((state) => Object.values(state.rentals));
     const dispatch = useDispatch();
-
-    const images = useSelector((state) => Object.values(state.images));
+    const history = useHistory();
     
+    
+    const sessionUser = useSelector((state) => state.session.user);
+    const images = useSelector((state) => Object.values(state.images));
     const currentRental = useSelector(state => state.rentals[id])
     const currentImages = images.filter(image => image.rentalId === Number(id));
+
+    const accessUser = currentRental?.userId === sessionUser?.id;
     
-    
+
     useEffect(() => {
         dispatch(getRentals());
         dispatch(getImages());
     }, [dispatch])
     
+    
+    const removeBtnHandler = (e) => {
+        e.preventDefault();
+        const removed = dispatch(cancelRental(Number(currentRental?.id)));
+        if (removed) {
+            history.push('/');
+        }
+    };
+
+    const bookBtnHandler = (e) => {
+        e.preventDefault();
+    }
+
+    const editBtnHandler = (e) => {
+        history.push(`/rentals/${currentRental?.id}/edit`);
+        
+    }
     
 
 
@@ -47,7 +66,9 @@ const RentalPage = () => {
                     <div>{`$${currentRental?.price} per day`}</div>
                     <div>{'⭐️⭐️⭐️⭐️⭐️ Excellent'}</div>
                     <div>{'Start Date → End Date'}</div>
-                    <div>{'Book'}</div>
+                    {accessUser? <button name="remove-btn" type="button" onClick={removeBtnHandler}>Remove Rental</button> :
+                    <button name="book-btn"type="submit">Book</button>}
+                    {accessUser && <button name="edit-btn" type="submit" onClick={editBtnHandler}>Edit Rental</button>}
                 </div>
             </div>
         </div>

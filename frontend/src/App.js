@@ -8,6 +8,7 @@ import Navigation from "./components/Navigation";
 import HomePage from "./components/HomePage";
 import NewRentalForm from "./components/NewRentalFormPage";
 import RentalPage from "./components/RentalPage";
+import EditRentalForm from "./components/EditRentalFormPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -33,11 +34,14 @@ function App() {
         <Route path="/" exact>
           <HomePage />
         </Route>
-        <Route path="/rentals/:id(\d+)">
+        <Route path="/rentals/new" exact>
+          <NewRentalForm />
+        </Route>
+        <Route path="/rentals/:id" exact>
           <RentalPage />
         </Route>
-        <Route path="/rentals/new">
-          <NewRentalForm />
+        <Route path="/rentals/:id/edit">
+          <EditRentalForm />
         </Route>
       </Switch>
     </>
