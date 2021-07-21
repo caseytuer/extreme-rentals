@@ -56,7 +56,7 @@ router.post('/create', asyncHandler(async (req, res) => {
 //     })
 // );
 
-router.put('/:rentalId', 
+router.put('/:id', 
     requireAuth,
     asyncHandler(async (req, res) => {
         const { id } = req.params;
