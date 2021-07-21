@@ -3,12 +3,14 @@ import thunk from 'redux-thunk';
 import sessionReducer from './session';
 import rentalsReducer from './rentals';
 import usersReducer from './users';
+import imagesReducer from './images';
 
 
 export const rootReducer = combineReducers({
     session: sessionReducer,
     rentals: rentalsReducer,
     users: usersReducer,
+    images: imagesReducer,
 });
 
 let enhancer;

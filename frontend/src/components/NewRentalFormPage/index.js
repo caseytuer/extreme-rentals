@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as sessionActions from "../../store/session";
-// import { createRental } from "../../store/rentals";
+import * as rentalActions from "../../store/rentals";
 
 
 function NewRentalForm() {
@@ -22,11 +22,12 @@ function NewRentalForm() {
     // setUserId(sessionUser)
     // console.log(sessionUser)
 
-
-    const handleSubmit = (e) => {
+    
+    const handleSubmit = async (e) => {
         e.preventDefault();
         
-            return dispatch(sessionActions.createRental({ 
+        setUserId(sessionUser?.id);
+            return dispatch(rentalActions.createRental({ 
                 userId,
                 address,
                 city,

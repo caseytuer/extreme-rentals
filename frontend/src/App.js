@@ -7,6 +7,7 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import HomePage from "./components/HomePage";
 import NewRentalForm from "./components/NewRentalFormPage";
+import RentalPage from "./components/RentalPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -31,6 +32,9 @@ function App() {
       <Switch>
         <Route path="/" exact>
           <HomePage />
+        </Route>
+        <Route path="/rentals/:id(\d+)">
+          <RentalPage />
         </Route>
         <Route path="/rentals/new">
           <NewRentalForm />

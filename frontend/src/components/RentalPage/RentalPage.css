@@ -1,0 +1,38 @@
+.rental-img-container {
+    display: flex;
+    margin: 7em 2em 4em 2em;
+    justify-content: center;
+    max-height: 50%;
+}
+
+.rental-img-main {
+    display: flex;
+    max-width: 50%;
+    flex-wrap: wrap;
+}
+.rental-img-sub {
+    width: 50%;
+    max-height: 50%;
+}
+
+img:hover {
+    box-shadow: 0 5px 15px;
+    transform: scale(1.1);
+}
+
+.rental-info-container {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.title-and-description {
+    display: flex;
+    flex-direction: row;
+    flex-flow: column;
+    max-width: 65%;
+    justify-content: space-between;
+}
+
+.rental-title {
+    font-size: 30px;
+}
