@@ -71,6 +71,17 @@ const RentalPage = () => {
                     {accessUser && <button name="edit-btn" type="submit" onClick={editBtnHandler}>Edit Rental</button>}
                 </div>
             </div>
+            <div className="comments-container">
+                <div className="comment-card">
+                    <div className="icon-and-name">
+                        <div className="icon">
+                            <img className="icon" src="https://randomuser.me/api/portraits/women/0.jpg"></img>
+                        </div>
+                        <div className="name">Jill Vargas</div>
+                    </div>
+                    <div className="comment-body">Such a awesome treehouse in an absolutely beautiful and peaceful setting! We loved staying here and hope to visit again!</div>
+                </div>
+            </div>
         </div>
     )
 }

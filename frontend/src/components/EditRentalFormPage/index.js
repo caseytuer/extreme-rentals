@@ -16,7 +16,7 @@ const EditRentalForm = () => {
     const history = useHistory();
     
     const sessionUser = useSelector((state) => state.session.user);
-    const currentRental = useSelector(state => state.rentals[id]);
+    const currentRental = useSelector((state) => state.rentals[id]);
 
     console.log(currentRental)
 
@@ -56,10 +56,10 @@ const EditRentalForm = () => {
             description,
             price
         }))
-            .catch(async (res) => {
-                const data = await res.json();
-                if (data && data.errors) setErrors(data.errors);
-            });
+            // .catch(async (response) => {
+            //     const data = await response.json();
+            //     if (data && data.errors) setErrors(data.errors);
+            // });
 
         if (rentalEdited) {
             history.push(`/`)

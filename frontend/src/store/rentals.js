@@ -1,7 +1,7 @@
 import { csrfFetch } from "./csrf";
 
-const SET_RENTAL = 'rentals/SetRental';
-const SET_RENTALS = 'rentals/SetRentals';
+const SET_RENTAL = 'rentals/SET_RENTAL';
+const SET_RENTALS = 'rentals/SET_RENTALS';
 const ADD_RENTAL = 'rentals/RENTAL';
 const DELETE_RENTAL = 'rentals/DELETE';
 const UPDATE_RENTAL = 'rentals/UPDATE';
@@ -46,10 +46,7 @@ export const createRental = data => async (dispatch) => {
         dispatch(addRental(rental));
         return rental
     }
-
-
 }
-
 
 
 export const getRentals = () => async (dispatch) => {
@@ -77,6 +74,7 @@ export const editRental = (rental) => async (dispatch) => {
     if (response.ok) {
         // console.log(rental)
         const updatedRental = await response.json();
+        console.log(updatedRental)
         dispatch(updateRental(updatedRental));
         return updatedRental;
     }
@@ -88,7 +86,7 @@ export const cancelRental = (rentalId) => async (dispatch) => {
     });
     if (response.ok) {
         const rentalId = await response.json();
-        return dispatch(deleteRental(rentalId));
+        return dispatch(deleteRental(rentalId.rentalId));
     };
 }
 
@@ -97,16 +95,33 @@ const initialState = {};
 
 const rentalsReducer = (state = initialState, action) => {
     switch (action.type) {
+        case ADD_RENTAL:
+            var newState = {...state};
+            const newRental = action.rental;
+            newState[newRental.rental.id] = {
+                id: newRental.rental.id,
+                userId: newRental.rental.userId,
+                address: newRental.rental.adress,
+                city: newRental.rental.city,
+                state: newRental.rental.state,
+                country: newRental.rental.country,
+                lat: newRental.rental.lat,
+                lng: newRental.rental.lng,
+                name: newRental.rental.name,
+                description: newRental.rental.description,
+                price: newRental.rental.price
+            };
+            return newState;
         case SET_RENTALS:
             return { ...state, ...Object.fromEntries(action.rentals.map((rental) => [rental.id, rental])) };
         case DELETE_RENTAL:
-            const newState = { ...state }
+            var newState = { ...state }
             delete newState[action.rentalId]
             return newState;
         case UPDATE_RENTAL: {
             return {
                 ...state,
-                [action.rentalId]: {
+                [action.rental?.updatedRental.id]: {
                     ...action.rental.updatedRental
                 }
             }

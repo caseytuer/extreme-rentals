@@ -36,3 +36,17 @@ img:hover {
 .rental-title {
     font-size: 30px;
 }
+
+.comments-container {
+    display: flex;
+    justify-content: center;
+}
+
+.comment-card {
+    display: flex;
+}
+
+.icon {
+    border-radius: 200px;
+    max-width: 50px;
+}

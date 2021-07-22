@@ -32,7 +32,7 @@ const HomePage = () => {
                 {rentals?.map((rental) => {
                     const rentalImages = images.find(image => image.rentalId === rental.id);
                     return (
-                        <Link to={`/rentals/${rental.id}`} className="browse-card">
+                        <Link to={`/rentals/${rental.id}`} className="browse-card" key={rental.id}>
                             <div >
                                 <div>
                                     <img className="browse-card-img" src={rentalImages?.url} alt=""/>
