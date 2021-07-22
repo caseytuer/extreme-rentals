@@ -75,7 +75,7 @@ const RentalPage = () => {
                 <div className="comment-card">
                     <div className="icon-and-name">
                         <div className="icon">
-                            <img className="icon" src="https://randomuser.me/api/portraits/women/0.jpg"></img>
+                            <img className="icon" src="https://randomuser.me/api/portraits/women/0.jpg" alt="icon"></img>
                         </div>
                         <div className="name">Jill Vargas</div>
                     </div>
