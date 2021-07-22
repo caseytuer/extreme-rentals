@@ -6,7 +6,6 @@ const { requireAuth } = require('../../utils/auth');
 const router = express.Router();
 
 
-
 router.get('', asyncHandler(async(req, res) => {
     const reviews = await Review.findAll();
     res.json(reviews);
@@ -21,5 +20,26 @@ router.post('/create', asyncHandler(async(req, res) => {
     });
     return res.json({ review });
 }));
+
+router.put('/:id',
+    requireAuth,
+    asyncHandler(async(req, res) => {
+        const { id } = req.params;
+        await Review.update(
+            req.body,
+            { where: { id } }
+        );
+        const updatedReview = await Review.findByPk(id);
+        return res.json({ updatedReview });
+}));
+
+router.delete('/:id',
+    requireAuth,
+    asyncHandler(async (req, res, next) => {
+        const review = await Review.findByPk(req.params.id);
+        await review.destroy();
+        res.json({ reviewId: req.params.id });
+    })
+)
 
 module.exports = router;

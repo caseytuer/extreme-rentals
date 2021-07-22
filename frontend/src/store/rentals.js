@@ -74,7 +74,6 @@ export const editRental = (rental) => async (dispatch) => {
     if (response.ok) {
         // console.log(rental)
         const updatedRental = await response.json();
-        console.log(updatedRental)
         dispatch(updateRental(updatedRental));
         return updatedRental;
     }
