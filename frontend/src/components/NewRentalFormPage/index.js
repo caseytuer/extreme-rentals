@@ -7,6 +7,7 @@ import { useHistory } from "react-router-dom";
 
 
 function NewRentalForm() {
+    
     const history = useHistory();
     const sessionUser = useSelector((state) => state.session.user);
     const dispatch = useDispatch();

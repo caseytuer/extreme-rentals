@@ -4,6 +4,7 @@ import sessionReducer from './session';
 import rentalsReducer from './rentals';
 import usersReducer from './users';
 import imagesReducer from './images';
+import reviewsReducer from './reviews';
 
 
 export const rootReducer = combineReducers({
@@ -11,6 +12,7 @@ export const rootReducer = combineReducers({
     rentals: rentalsReducer,
     images: imagesReducer,
     users: usersReducer,
+    reviews: reviewsReducer
 });
 
 let enhancer;

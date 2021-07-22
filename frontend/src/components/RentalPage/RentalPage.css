@@ -44,6 +44,8 @@ img:hover {
 
 .comment-card {
     display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
 }
 
 .icon {

@@ -18,7 +18,7 @@ module.exports = {
         type: Sequelize.INTEGER,
         references: { model: 'Rentals' }
       },
-      review: {
+      reviewBody: {
         allowNull: false,
         type: Sequelize.TEXT
       },

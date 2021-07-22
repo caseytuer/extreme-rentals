@@ -5,6 +5,7 @@ import { cancelRental, editRental } from "../../store/rentals";
 import { getRentals } from "../../store/rentals";
 import { getImages } from "../../store/images";
 import './RentalPage.css';
+import ReviewsComponent from "../ReviewsComponent";
 
 const RentalPage = () => {
 
@@ -15,8 +16,8 @@ const RentalPage = () => {
     
     const sessionUser = useSelector((state) => state.session.user);
     const images = useSelector((state) => Object.values(state.images));
-    const currentRental = useSelector(state => state.rentals[id])
-    const currentImages = images.filter(image => image.rentalId === Number(id));
+    const currentRental = useSelector((state) => state.rentals[id])
+    const currentImages = images.filter((image) => image.rentalId === Number(id));
 
     const accessUser = currentRental?.userId === sessionUser?.id;
     
@@ -73,13 +74,10 @@ const RentalPage = () => {
             </div>
             <div className="comments-container">
                 <div className="comment-card">
-                    <div className="icon-and-name">
-                        <div className="icon">
-                            <img className="icon" src="https://randomuser.me/api/portraits/women/0.jpg" alt="icon"></img>
-                        </div>
-                        <div className="name">Jill Vargas</div>
+                    <div className="new-comment-textarea">
+                        <ReviewsComponent />
                     </div>
-                    <div className="comment-body">Such a awesome treehouse in an absolutely beautiful and peaceful setting! We loved staying here and hope to visit again!</div>
+                    
                 </div>
             </div>
         </div>
