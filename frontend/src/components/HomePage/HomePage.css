@@ -1,5 +1,5 @@
 #browse-card-container {
-    margin-top: 8em;
+    margin-top: 10em;
     display: flex;
     flex-wrap: wrap;
     /* justify-content: center; */
@@ -17,6 +17,7 @@
     box-shadow: 0 5px 15px #8DCAFF;
 }
 
+
 .browse-card-img {
     width: 100%;
     height: 250px;
@@ -25,5 +26,6 @@
 
 .card-title {
     text-align: center;
+    margin: 5px;
 }
 

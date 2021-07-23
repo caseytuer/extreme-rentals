@@ -13,7 +13,7 @@ function Navigation({ isLoaded }) {
         sessionLinks = (
             <>
                 <div>
-                    <NavLink className="login-btn" to="/rentals/new">Become an Extremist</NavLink>
+                    <NavLink className="login-btn" to="/rentals/new">become an extremist</NavLink>
                 </div>
                 <div>
                     <ProfileButton  user={sessionUser} />

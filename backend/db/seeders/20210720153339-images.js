@@ -226,7 +226,7 @@ module.exports = {
         },
         {
           rentalId: 12,
-          url: 'https://extreme-rentals.s3.us-west-1.amazonaws.com/12-snowboard-1.webp',
+          url: 'https://extreme-rentals.s3.us-west-1.amazonaws.com/12-snowboard-1.jpeg',
         },
         {
           rentalId: 12,

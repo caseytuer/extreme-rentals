@@ -30,8 +30,8 @@ function ProfileButton({ user }) {
 
     return (
         <>
-            <button onClick={openMenu}>
-                <i className="fas fa-skull" />
+            <button onClick={openMenu} className="profile-btn">
+                <img src="https://extreme-rentals.s3.us-west-1.amazonaws.com/imageedit_5_8587382554_adobespark.png" alt="avatar" className="logo-img"></img>
             </button>
             {showMenu && (
                 <ul className="profile-dropdown">

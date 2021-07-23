@@ -3,16 +3,23 @@
     width: 100%;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 1px solid #8DCAFF;
-    margin-bottom: 5em;
+    border-bottom: .000005px solid #113744;
+    margin-bottom: 12em;
     overflow: hidden;
     position: fixed;
     top: 0;
     background-color: white;
+    z-index: 1;
 }
 
 .logo-img {
-    max-height: 80px;
+    max-width: 100px;
+    border: none;
+    margin-left: 20px;
+}
+
+.logo-img:hover {
+    box-shadow: 0 5px 15px #8DCAFF;
 }
 
 .login-and-signup-btns {
@@ -20,13 +27,17 @@
     display: flex;
     flex-flow: nowrap;
     justify-content: space-between;
+    align-items: center;
 }
 
 #search-bar {
     width: 50rem;
-    border: .5px solid #8DCAFF;
+    color: #8DCAFF;
     padding: 0.5rem;
-    font-size: 15px;
+    font-size: 30px;
+    color: black;
+    font-weight: bold;
+    border: none;
 }
 
 #search-bar:hover {
@@ -35,4 +46,17 @@
 
 .login-btn {
     margin-right: 20px;
+    text-align: center;
+    border: none;
+    color: #113744;
+    padding: 3px;
+}
+
+.login-btn:hover {
+    border: 3px solid #8DCAFF;
+}
+
+.profile-btn {
+    border: none;
+    background-color: white;
 }

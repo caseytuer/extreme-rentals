@@ -45,61 +45,6 @@ const HomePage = () => {
                     )
                 }
                 )}
-
-                {/* {images.map((image) => 
-                    <img key={image.id} src={image.url} alt=""></img>
-                )} */}
-
-            {/* {users.map((user) => <li key={user.id}>{user.username}</li>)} */}
-            
-            {/* <div className="browse-img">
-                <img src="https://www.watersportspc.com/images/Photo-Sep-20-10-17-28-AM.jpg" alt="/#"></img>
-            </div>
-            <div className="browse-img">
-                <img src="https://www.watersportspc.com/images/Photo-Sep-20-10-17-28-AM.jpg" alt="/#"></img>
-            </div>
-            <div className="browse-img">
-                <img src="https://www.watersportspc.com/images/Photo-Sep-20-10-17-28-AM.jpg" alt="/#"></img>
-            </div>
-            <div className="browse-img">
-                <img src="https://www.watersportspc.com/images/Photo-Sep-20-10-17-28-AM.jpg" alt="/#"></img>
-            </div>
-            <div className="browse-img">
-                <img src="https://www.watersportspc.com/images/Photo-Sep-20-10-17-28-AM.jpg" alt="/#"></img>
-            </div>
-            <div className="browse-img">
-                <img src="https://www.watersportspc.com/images/Photo-Sep-20-10-17-28-AM.jpg" alt="/#"></img>
-            </div>
-            <div className="browse-img">
-                <img src="https://www.watersportspc.com/images/Photo-Sep-20-10-17-28-AM.jpg" alt="/#"></img>
-            </div>
-            <div className="browse-img">
-                <img src="https://www.watersportspc.com/images/Photo-Sep-20-10-17-28-AM.jpg" alt="/#"></img>
-            </div>
-            <div className="browse-img">
-                <img src="https://www.watersportspc.com/images/Photo-Sep-20-10-17-28-AM.jpg" alt="/#"></img>
-            </div>
-            <div className="browse-img">
-                <img src="https://www.watersportspc.com/images/Photo-Sep-20-10-17-28-AM.jpg" alt="/#"></img>
-            </div>
-            <div className="browse-img">
-                <img src="https://www.watersportspc.com/images/Photo-Sep-20-10-17-28-AM.jpg" alt="/#"></img>
-            </div>
-            <div className="browse-img">
-                <img src="https://www.watersportspc.com/images/Photo-Sep-20-10-17-28-AM.jpg" alt="/#"></img>
-            </div>
-            <div className="browse-img">
-                <img src="https://www.watersportspc.com/images/Photo-Sep-20-10-17-28-AM.jpg" alt="/#"></img>
-            </div>
-            <div className="browse-img">
-                <img src="https://www.watersportspc.com/images/Photo-Sep-20-10-17-28-AM.jpg" alt="/#"></img>
-            </div>
-            <div className="browse-img">
-                <img src="https://www.watersportspc.com/images/Photo-Sep-20-10-17-28-AM.jpg" alt="/#"></img>
-            </div>
-            <div className="browse-img">
-                <img src="https://www.watersportspc.com/images/Photo-Sep-20-10-17-28-AM.jpg" alt="/#"></img>
-            </div> */}
         </div>
     )
 }

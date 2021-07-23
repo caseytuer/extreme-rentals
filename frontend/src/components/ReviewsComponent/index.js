@@ -121,7 +121,7 @@ const ReviewsComponent = () => {
     return (
         <>
             {sessionUser && 
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className="new-comment-form">
                 <input 
                     className="form-input"
                     value={reviewBody}
@@ -132,11 +132,11 @@ const ReviewsComponent = () => {
                     type="submit"
                 >Submit</button>
             </form>}
-            <div>
+            <div className="new-comment-form">
                 {currentReviews.map((review) => {
                     const commentUser = users.find((user) => user.id === review.userId)
                     return (
-                        <div>
+                        <div className="comments-card">
                             <div>{commentUser?.username}</div>
                             <img className="icon" src="https://thispersondoesnotexist.com/image" alt="icon"></img>
                             <div id={`review-body-${review.id}`}>{review?.reviewBody}</div>

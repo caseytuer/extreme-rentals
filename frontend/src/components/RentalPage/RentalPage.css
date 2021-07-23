@@ -1,6 +1,6 @@
 .rental-img-container {
     display: flex;
-    margin: 7em 2em 4em 2em;
+    margin: 9em 2em 4em 2em;
     justify-content: center;
     max-height: 50%;
 }
@@ -23,6 +23,7 @@ img:hover {
 .rental-info-container {
     display: flex;
     justify-content: space-evenly;
+    margin-bottom: 3em;
 }
 
 .title-and-description {
@@ -39,16 +40,27 @@ img:hover {
 
 .comments-container {
     display: flex;
-    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 
 .comment-card {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
 }
 
 .icon {
     border-radius: 200px;
     max-width: 50px;
+}
+
+.new-comment-textarea {
+    display: flex;
+   align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+
 }
