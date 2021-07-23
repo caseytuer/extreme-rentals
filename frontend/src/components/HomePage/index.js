@@ -37,8 +37,13 @@ const HomePage = () => {
                                 <div>
                                     <img className="browse-card-img" src={rentalImages?.url} alt=""/>
                                 </div>
-                                <div>
-                                    <p className="card-title">{rental?.name}</p>
+                                <div className="title-and-price">
+                                    <div>
+                                        <p className="card-title">{rental?.name.length < 12? rental?.name : rental?.name.slice(0,20) + '...'}</p>
+                                    </div>
+                                    <div className="card-price">{`$${rental?.price}/day`}</div>
+                                </div>
+                                <div className="city-and-state">{`${rental?.city}, ${rental?.state}`}
                                 </div>
                             </div>
                         </Link> 

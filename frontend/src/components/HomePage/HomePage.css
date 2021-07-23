@@ -4,12 +4,12 @@
     flex-wrap: wrap;
     /* justify-content: center; */
     flex-grow: 0;
-    justify-content: space-evenly;
+    justify-content: center;
 }
 
 .browse-card {
     width: 20%;
-    margin: .3em;
+    margin: 1em;
     border-radius: 20px;
 }
 
@@ -25,7 +25,25 @@
 }
 
 .card-title {
-    text-align: center;
+    /* text-align: center; */
     margin: 5px;
+    font-size: larger;
+    font-weight: bolder;
 }
 
+.card-price {
+}
+
+.title-and-price {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 1em;
+    padding-right: 1.5em;
+}
+
+.city-and-state {
+    padding-left: 1em;
+    margin-left: 5px;
+    font-weight: lighter;
+}

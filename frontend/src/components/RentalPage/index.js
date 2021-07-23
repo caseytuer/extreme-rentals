@@ -68,7 +68,7 @@ const RentalPage = () => {
                     <div>{'⭐️⭐️⭐️⭐️⭐️ Excellent'}</div>
                     <div>{'Start Date → End Date'}</div>
                     {accessUser? <button name="remove-btn" type="button" onClick={removeBtnHandler}>Remove Rental</button> :
-                    <button name="book-btn"type="submit">Book</button>}
+                    <button name="book-btn"type="submit" className="form-btn">Book</button>}
                     {accessUser && <button name="edit-btn" type="submit" onClick={editBtnHandler}>Edit Rental</button>}
                 </div>
             </div>

@@ -39,7 +39,7 @@ const LoginFormPage = () => {
 
     return (
         <div className="login-form-container">
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className="login-demo-form">
                 <ul>
                     {errors.map((error, index) => <li key={index}>{error}</li>)}
                 </ul>
@@ -66,7 +66,7 @@ const LoginFormPage = () => {
                             />
                         </div>
                         <button className="form-btn" type="submit">Log In</button>
-                        <button id="demo-btn" className="form-btn" type="button" onClick={demoLogin}>Demo</button>
+                        <button className="demo-btn" className="demo-btn" type="button" onClick={demoLogin}>Demo</button>
                     </div>
                 </label>
             </form>

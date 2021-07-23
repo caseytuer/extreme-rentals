@@ -1,5 +1,5 @@
 .form-input {
-    width: 80%;
+    width: 100%;
     height: 30px;
     border: .5px solid #8DCAFF;
     padding: 5px;
@@ -8,7 +8,7 @@
 
 
 .form-btn {
-    width: 90px;
+    width: 100%;
     height: 30px;
     background-color: #8DCAFF;
     border: .5px solid #8DCAFF;
@@ -23,6 +23,33 @@
     width: 80%;
     margin: 1em;
     margin-left: 0;
-    border: .5px solid #8DCAFF;
     padding: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.icon-and-name {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    margin: 5px;
+}
+
+.icon {
+    margin-right: 8px;
+}
+
+.edit-and-delete {
+    display: flex;
+    align-items: flex-end;
+}
+
+.review-body {
+    margin-top: 5px;
+    margin-bottom: 5px;;
+}
+
+#review-input {
+    height: 50px;
 }

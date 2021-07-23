@@ -34,13 +34,15 @@ function ProfileButton({ user }) {
                 <img src="https://extreme-rentals.s3.us-west-1.amazonaws.com/imageedit_5_8587382554_adobespark.png" alt="avatar" className="logo-img"></img>
             </button>
             {showMenu && (
-                <ul className="profile-dropdown">
-                    <li>{user.username}</li>
-                    <li>{user.email}</li>
-                    <li>
-                        <button onClick={logout}>Log Out</button>
-                    </li>
-                </ul>
+                <div className="profile-dropdown-container">
+                    <ul className="profile-dropdown">
+                        <li className="profile-dropdown-content">{user.username}</li>
+                        <li className="profile-dropdown-content">{user.email}</li>
+                        <li className="profile-dropdown-content">
+                            <button onClick={logout}>Log Out</button>
+                        </li>
+                    </ul>
+                </div>
             )}
         </>
     );

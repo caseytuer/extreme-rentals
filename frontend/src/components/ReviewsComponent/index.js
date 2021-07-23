@@ -5,6 +5,7 @@ import * as reviewActions from '../../store/reviews'
 import { getUsers } from "../../store/users";
 import './ReviewsComponent.css';
 
+
 const ReviewsComponent = () => {
 
     const sessionUser = useSelector((state) => state.session.user);
@@ -43,6 +44,7 @@ const ReviewsComponent = () => {
             if (data && data.errors) setErrors(data.errors);
         });
         if (reviewCreated) {
+            setReviewBody('');
             history.push(`/rentals/${rentalId}`)
         }
     }
@@ -100,7 +102,7 @@ const ReviewsComponent = () => {
         const thisCommentInput = document.getElementById(`edit-comment-input-${targetNum}`)
         thisCommentInput.placeholder = thisReviewBody.innerText;
 
-        
+        console.log(e.target)
         // const editSubmitBtn = document.getElementById(`edit-comment-submit-btn-${targetNum}`)
         // editSubmitBtn.onSubmit = editComment();
     }
@@ -118,12 +120,15 @@ const ReviewsComponent = () => {
         }
     }
 
+    console.log(userId)
+
     return (
         <>
             {sessionUser && 
             <form onSubmit={handleSubmit} className="new-comment-form">
                 <input 
                     className="form-input"
+                    id="review-input"
                     value={reviewBody}
                     onChange={e => setReviewBody(e.target.value)}
                     placeholder="Leave a review"
@@ -137,21 +142,25 @@ const ReviewsComponent = () => {
                     const commentUser = users.find((user) => user.id === review.userId)
                     return (
                         <div className="comments-card">
-                            <div>{commentUser?.username}</div>
-                            <img className="icon" src="https://thispersondoesnotexist.com/image" alt="icon"></img>
-                            <div id={`review-body-${review.id}`}>{review?.reviewBody}</div>
-                            <button 
-                                id={`edit-review-btn-${review.id}`}
-                                type="button"
-                                onClick={editingTrue}
-                                >Edit
-                            </button>
-                            <button
-                                id={`delete-review-btn-${review.id}`}
-                                type="button"
-                                onClick={deleteBtn}
-                                >Delete
-                            </button>
+                            <div className="icon-and-name">
+                                <div>{commentUser?.username}</div>
+                                <img className="icon" src="https://thispersondoesnotexist.com/image" alt="icon"></img>
+                            </div>
+                            <div id={`review-body-${review.id}`} className="review-body">{review?.reviewBody}</div>
+                            <div className="edit-and-delete">
+                                <button className="form-btn"
+                                    id={`edit-review-btn-${review.id}`}
+                                    type="button"
+                                    onClick={editingTrue}
+                                    >Edit
+                                </button>
+                                <button className="demo-btn"
+                                    id={`delete-review-btn-${review.id}`}
+                                    type="button"
+                                    onClick={deleteBtn}
+                                    >Delete
+                                </button>
+                            </div>
                             <form 
                                 onSubmit={editComment}
                                 id={`edit-comment-form-${review.id}`} 

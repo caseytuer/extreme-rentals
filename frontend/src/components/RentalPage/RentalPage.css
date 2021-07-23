@@ -22,7 +22,7 @@ img:hover {
 
 .rental-info-container {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
     margin-bottom: 3em;
 }
 
@@ -30,7 +30,7 @@ img:hover {
     display: flex;
     flex-direction: row;
     flex-flow: column;
-    max-width: 65%;
+    max-width: 70%;
     justify-content: space-between;
 }
 

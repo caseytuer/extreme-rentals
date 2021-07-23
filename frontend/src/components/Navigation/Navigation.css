@@ -3,7 +3,7 @@
     width: 100%;
     align-items: center;
     justify-content: space-between;
-    border-bottom: .000005px solid #113744;
+    border-bottom: .000005px solid #8DCAFF;
     margin-bottom: 12em;
     overflow: hidden;
     position: fixed;
@@ -60,3 +60,28 @@
     border: none;
     background-color: white;
 }
+
+.profile-dropdown {
+    position: relative;
+    /* display: flex; */
+    flex-direction: column;
+    flex-wrap: wrap;
+    z-index: 1;
+}
+
+.profile-dropdown-content {
+    display: block;
+    position: absolute;
+    background-color: #8DCAFF;
+    z-index: 2;
+    border: 2px solid black;
+    height: 60px;
+}
+
+.profile-dropdown-container {
+    min-width: 40px;
+    min-height: 50px;
+    display: flex;
+    flex-wrap: wrap;
+}
+

@@ -1,6 +1,7 @@
 import { csrfFetch } from "./csrf";
 
 const ADD_REVIEW = 'reviews/ADD_REVIEW';
+const SET_REVIEW = 'reviews/SET_REVIEWS';
 const SET_REVIEWS = 'reviews/SET_REVIEWS';
 const UPDATE_REVIEW = 'reviews/UPDATE_REVIEW';
 const DELETE_REVIEW = 'reviews/DELETE_REVIEW';
@@ -8,6 +9,11 @@ const DELETE_REVIEW = 'reviews/DELETE_REVIEW';
 const addReview = (review) => ({
     type: ADD_REVIEW,
     review
+})
+
+const setReview = (reviewId) => ({
+    type: SET_REVIEW,
+    reviewId
 })
 
 const setReviews = (reviews) => ({
@@ -39,6 +45,16 @@ export const createReview = data => async (dispatch) => {
         return review;
     }
 }
+
+export const getReviewById = (reviewId) => async (dispatch) => {
+    const res = await csrfFetch(`/api/reviews/${reviewId}`);
+    
+    if (res.ok) {
+        const review = await res.json();
+        dispatch(setReview(review));
+        return review;
+    };
+};
 
 export const getReviews = () => async (dispatch) => {
     const response = await csrfFetch('/api/reviews');
@@ -83,6 +99,8 @@ const reviewsReducer = (state = initialState, action) => {
                 reviewBody: newReview.review.reviewBody
             };
             return newState;
+        // case SET_REVIEW:
+        //     return { ...state, [action.review]: review  }
         case SET_REVIEWS:
             return { ...state, ...Object.fromEntries(action.reviews.map((review) => [review.id, review]))};
         case UPDATE_REVIEW: {
