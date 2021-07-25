@@ -29,7 +29,7 @@ function ProfileButton({ user }) {
     };
 
     return (
-        <>
+        <div className="dropdown-btn-container">
             <button onClick={openMenu} className="profile-btn">
                 <img src="https://extreme-rentals.s3.us-west-1.amazonaws.com/imageedit_5_8587382554_adobespark.png" alt="avatar" className="logo-img"></img>
             </button>
@@ -39,12 +39,12 @@ function ProfileButton({ user }) {
                         <li className="profile-dropdown-content">{user.username}</li>
                         <li className="profile-dropdown-content">{user.email}</li>
                         <li className="profile-dropdown-content">
-                            <button onClick={logout}>Log Out</button>
+                            <button className="demo-btn" onClick={logout}>Log Out</button>
                         </li>
                     </ul>
                 </div>
             )}
-        </>
+        </div>
     );
 }
 

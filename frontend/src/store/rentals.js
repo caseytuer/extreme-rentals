@@ -72,7 +72,7 @@ export const editRental = (rental) => async (dispatch) => {
         body: JSON.stringify({ userId, address, city, state, country, lat, lng, name, description, price })
     });
     if (response.ok) {
-        // console.log(rental)
+        
         const updatedRental = await response.json();
         dispatch(updateRental(updatedRental));
         return updatedRental;

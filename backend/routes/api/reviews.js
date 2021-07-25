@@ -11,6 +11,12 @@ router.get('', asyncHandler(async(req, res) => {
     res.json(reviews);
 }))
 
+router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
+    const reviewId = parseInt(req.params.id, 10);
+    const review = await Review.findByPk(reviewId, 
+        { include: [User]});
+}))
+
 router.post('/create', asyncHandler(async(req, res) => {
     const { userId, rentalId, reviewBody } = req.body;
     const review = await Review.create({

@@ -53,3 +53,7 @@
 #review-input {
     height: 50px;
 }
+
+#add-review-submit-btn {
+    margin-bottom: 3em;
+}

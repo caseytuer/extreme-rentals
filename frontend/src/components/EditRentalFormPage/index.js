@@ -18,7 +18,6 @@ const EditRentalForm = () => {
     const sessionUser = useSelector((state) => state.session.user);
     const currentRental = useSelector((state) => state.rentals[id]);
 
-    console.log(currentRental)
 
     const [address, setAddress] = useState(currentRental?.address);
     const [city, setCity] = useState(currentRental?.city);

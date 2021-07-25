@@ -12,15 +12,11 @@ import { Link } from 'react-router-dom';
 const HomePage = () => {
 
     const dispatch = useDispatch();
-    // const users = useSelector((state) => Object.values(state.users));
     const rentals = useSelector((state) => Object.values(state.rentals));
     const images = useSelector((state) => Object.values(state.images));
 
-    // console.log(images);
-    // console.log(rentals);
 
     useEffect(() => {
-        // dispatch(getUsers());
         dispatch(getRentals());
         dispatch(getImages());
     }, [dispatch])

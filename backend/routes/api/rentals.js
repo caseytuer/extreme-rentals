@@ -36,26 +36,6 @@ router.post('/create', asyncHandler(async (req, res) => {
 }));
 
 
-// router.patch('',
-// requireAuth,
-// asyncHandler( async (req, res, next) => {
-//     const rentalData = req.body.rental;
-//     console.log(rentalData)
-//         try{
-//             let dbRental = await Rental.findByPk(rentalData.id);
-//             console.log(dbRental);
-//             dbRental.status = rentalData.status;
-//             await dbRental.save();
-//             dbRental = await Rental.findByPk(dbRental.id, {
-//                 include: User
-//             })
-//             res.json({ rental: dbRental });
-//         } catch(error) {
-//             return next(error)
-//         }
-//     })
-// );
-
 router.put('/:id', 
     requireAuth,
     asyncHandler(async (req, res) => {

@@ -24,7 +24,6 @@ const ReviewsComponent = () => {
     const users = useSelector((state) => Object.values(state.users));
     const currentReviews = reviews.filter((review) => review.rentalId === Number(id));
 
-    console.log(users)
 
     useEffect(() => {
         dispatch(reviewActions.getReviews());
@@ -68,8 +67,7 @@ const ReviewsComponent = () => {
 
     const editComment = (e) => {
         e.preventDefault();
-        console.log(e.target)
-        // setEditCommentBox()
+        
         const thisReviewId = e.target.id.split('-')[3];
 
         const reviewEdited = dispatch(reviewActions.editReview({
@@ -102,30 +100,25 @@ const ReviewsComponent = () => {
         const thisCommentInput = document.getElementById(`edit-comment-input-${targetNum}`)
         thisCommentInput.placeholder = thisReviewBody.innerText;
 
-        console.log(e.target)
-        // const editSubmitBtn = document.getElementById(`edit-comment-submit-btn-${targetNum}`)
-        // editSubmitBtn.onSubmit = editComment();
     }
 
     
-    // console.log(e.target)
     const deleteBtn = (e) => {
         e.preventDefault();
-        console.log('deletebtn')
+        
         const thisReviewId = e.target.id.split('-')[3]
         const removed = dispatch(reviewActions.destroyReview(Number(thisReviewId)));
         if (removed) {
-            console.log('test')
+            
             history.push(`/rentals/${rentalId}`);
         }
     }
 
-    console.log(userId)
 
     return (
         <>
             {sessionUser && 
-            <form onSubmit={handleSubmit} className="new-comment-form">
+            <form  className="new-comment-form">
                 <input 
                     className="form-input"
                     id="review-input"
@@ -134,7 +127,9 @@ const ReviewsComponent = () => {
                     placeholder="Leave a review"
                 />
                 <button className="form-btn"
-                    type="submit"
+                    onClick={handleSubmit}
+                    type="button"
+                    id="add-review-submit-btn"
                 >Submit</button>
             </form>}
             <div className="new-comment-form">
