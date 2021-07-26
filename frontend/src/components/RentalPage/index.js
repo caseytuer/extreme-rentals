@@ -32,7 +32,7 @@ const RentalPage = () => {
         e.preventDefault();
         const removed = dispatch(cancelRental(Number(currentRental?.id)));
         if (removed) {
-            history.push('/');
+            history.push('/home');
         }
     };
 
