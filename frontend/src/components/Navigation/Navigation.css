@@ -43,7 +43,7 @@
 }
 
 #search-bar:hover {
-    border: 3px solid #8DCAFF;
+   box-shadow: 0 5px 15px #8DCAFF;
 }
 
 .login-btn {
@@ -55,7 +55,7 @@
 }
 
 .login-btn:hover {
-    border: 3px solid #8DCAFF;
+    box-shadow: 0 5px 15px #8DCAFF;
 }
 
 .profile-btn {
@@ -89,4 +89,7 @@
 
 .dropdown-btn-container {
     margin-left: 1em;
+    display: flex;
+    flex-direction: column;
+   align-items: flex-end;
 }

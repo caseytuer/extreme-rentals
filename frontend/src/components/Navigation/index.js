@@ -39,7 +39,7 @@ function Navigation({ isLoaded }) {
                 <li>
                     <div className="navbar-container">
                         <div className="home-btn">
-                            <NavLink exact to="/" >
+                            <NavLink exact to="/home" >
                                 <img className="logo-img" src="https://i.ibb.co/DQ5q7yH/logo.png" alt=""></img>
                             </NavLink>
                         </div>

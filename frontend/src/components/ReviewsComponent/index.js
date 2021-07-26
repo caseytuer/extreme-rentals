@@ -6,6 +6,8 @@ import { getUsers } from "../../store/users";
 import './ReviewsComponent.css';
 
 
+
+
 const ReviewsComponent = () => {
 
     const sessionUser = useSelector((state) => state.session.user);
@@ -142,34 +144,38 @@ const ReviewsComponent = () => {
                                 <img className="icon" src="https://thispersondoesnotexist.com/image" alt="icon"></img>
                             </div>
                             <div id={`review-body-${review.id}`} className="review-body">{review?.reviewBody}</div>
-                            <div className="edit-and-delete">
-                                <button className="form-btn"
-                                    id={`edit-review-btn-${review.id}`}
-                                    type="button"
-                                    onClick={editingTrue}
-                                    >Edit
-                                </button>
-                                <button className="demo-btn"
-                                    id={`delete-review-btn-${review.id}`}
-                                    type="button"
-                                    onClick={deleteBtn}
-                                    >Delete
-                                </button>
-                            </div>
-                            <form 
-                                onSubmit={editComment}
-                                id={`edit-comment-form-${review.id}`} 
-                                hidden="true">
-                                <input 
-                                id={`edit-comment-input-${review.id}`}
-                                type="text"
-                                onChange={(e) => setEditCommentBox(e.target.value)}
-                                />
-                                <button
-                                    id={`edit-comment-submit-btn-${review.id}`}
-                                    type="submit"
-                                >Submit</button>
-                            </form>
+                            {sessionUser && 
+                            <>
+                                <div className="edit-and-delete">
+                                    <button className="form-btn"
+                                        id={`edit-review-btn-${review.id}`}
+                                        type="button"
+                                        onClick={editingTrue}
+                                        >Edit
+                                    </button>
+                                    <button className="demo-btn"
+                                        id={`delete-review-btn-${review.id}`}
+                                        type="button"
+                                        onClick={deleteBtn}
+                                        >Delete
+                                    </button>
+                                </div>
+                                <form 
+                                    onSubmit={editComment}
+                                    id={`edit-comment-form-${review.id}`} 
+                                    hidden="true">
+                                    <input 
+                                    id={`edit-comment-input-${review.id}`}
+                                    type="text"
+                                    onChange={(e) => setEditCommentBox(e.target.value)}
+                                    />
+                                    <button
+                                        id={`edit-comment-submit-btn-${review.id}`}
+                                        type="submit"
+                                    >Submit</button>
+                                </form>
+                            </>
+                            }
                         </div>
                     )
                 }

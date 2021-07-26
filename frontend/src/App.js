@@ -9,6 +9,7 @@ import HomePage from "./components/HomePage";
 import NewRentalForm from "./components/NewRentalFormPage";
 import RentalPage from "./components/RentalPage";
 import EditRentalForm from "./components/EditRentalFormPage";
+import SplashPage from "./components/SplashPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -22,28 +23,29 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
+          <Route path="/" exact>
+            <SplashPage />
+          </Route>
           <Route path="/login">
             <LoginFormPage />
           </Route>
           <Route path="/signup">
             <SignupFormPage />
           </Route>
+          <Route path="/home" exact>
+            <HomePage />
+          </Route>
+          <Route path="/rentals/new" exact>
+            <NewRentalForm />
+          </Route>
+          <Route path="/rentals/:id" exact>
+            <RentalPage />
+          </Route>
+          <Route path="/rentals/:id/edit">
+            <EditRentalForm />
+          </Route>
         </Switch>
       )}
-      <Switch>
-        <Route path="/" exact>
-          <HomePage />
-        </Route>
-        <Route path="/rentals/new" exact>
-          <NewRentalForm />
-        </Route>
-        <Route path="/rentals/:id" exact>
-          <RentalPage />
-        </Route>
-        <Route path="/rentals/:id/edit">
-          <EditRentalForm />
-        </Route>
-      </Switch>
     </>
   );
 }

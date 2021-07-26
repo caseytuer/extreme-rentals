@@ -13,7 +13,7 @@ const LoginFormPage = () => {
     const [errors, setErrors] = useState([]);
 
     if (sessionUser) return (
-        <Redirect to="/" />
+        <Redirect to="/home" />
     );
 
     const handleSubmit = (e) => {
@@ -29,7 +29,7 @@ const LoginFormPage = () => {
     const demoLogin = () => {
         const credential = 'Demo-extremist';
         const password = 'password';
-        history.push('/');
+        history.push('/home');
         return dispatch(sessionActions.login({ credential, password }))
             .catch(async (res) => {
                 const data = await res.json();
