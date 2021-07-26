@@ -47,7 +47,7 @@ function NewRentalForm() {
             });
 
             if (rentalCreated) {
-                history.push(`/`)
+                history.push(`/home`)
             }
                 
     }
