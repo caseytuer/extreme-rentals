@@ -61,7 +61,7 @@ const EditRentalForm = () => {
             // });
 
         if (rentalEdited) {
-            history.push(`/`)
+            history.push(`/home`)
         }
 
     }
