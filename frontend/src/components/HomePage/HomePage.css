@@ -1,14 +1,16 @@
 #browse-card-container {
-    margin-top: 10em;
+    /* margin-top: 10em; */
     display: flex;
     flex-wrap: wrap;
     /* justify-content: center; */
     flex-grow: 0;
     justify-content: center;
+    position: relative;
+    top: 10em;
 }
 
 .browse-card {
-    width: 20%;
+    max-width: 20%;
     margin: 1em;
     border-radius: 20px;
 }

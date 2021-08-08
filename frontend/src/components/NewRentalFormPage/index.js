@@ -4,6 +4,8 @@ import * as sessionActions from "../../store/session";
 import * as rentalActions from "../../store/rentals";
 import * as imageActions from "../../store/images";
 import { useHistory } from "react-router-dom";
+import "./NewRentalFormPage.css"
+
 
 
 function NewRentalForm() {
@@ -54,7 +56,7 @@ function NewRentalForm() {
     
 
     return (
-        <div id="signup-form-container">
+        <div id="new-rental-form-container"className="login-form-container">
             <form onSubmit={handleSubmit}>
                 <ul>
                     {errors.map((error, idx) => <li key={idx}>{error}</li>)}

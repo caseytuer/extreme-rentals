@@ -1,0 +1,9 @@
+#new-rental-form-container {
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top: 40%;
+}

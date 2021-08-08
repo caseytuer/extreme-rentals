@@ -12,8 +12,8 @@ function Navigation({ isLoaded }) {
     if (sessionUser) {
         sessionLinks = (
             <>
-                <div>
-                    <NavLink className="login-btn" to="/rentals/new">become an extremist</NavLink>
+                <div id="new-rental-btn-container">
+                    <NavLink id="new-rental-btn" className="login-btn" to="/rentals/new">become an extremist</NavLink>
                 </div>
                 <div>
                     <ProfileButton  user={sessionUser} />
@@ -26,7 +26,7 @@ function Navigation({ isLoaded }) {
                 <div className="login-btn">
                     <NavLink to="/login">Log In</NavLink>
                 </div>
-                <div className="signup-btn">
+                <div className="login-btn">
                     <NavLink to="/signup">Sign Up</NavLink>
                 </div>
             </>
@@ -40,11 +40,13 @@ function Navigation({ isLoaded }) {
                     <div className="navbar-container">
                         <div className="home-btn">
                             <NavLink exact to="/home" >
-                                <img className="logo-img" src="https://i.ibb.co/DQ5q7yH/logo.png" alt=""></img>
+                                <img className="logo-img" src="https://extreme-rentals.s3.us-west-1.amazonaws.com/61749a99a9424c2f9cdb2bb84536a639.png" alt=""></img>
                             </NavLink>
                         </div>
-                        <div >
-                            <SearchBar />
+                        <div id="find-the-extreme-btn">
+                            🔬 find the extreme 🛸
+                            {/* <img id="find-the-extreme" src="https://vectr.com/tmp/b1LGYBTS5f/a5B7Xq7AW.svg?width=640&height=640&select=a5B7Xq7AWpage0" alt="find the extreme"></img> */}
+                            {/* <SearchBar /> */}
                         </div>
                         <div className="login-and-signup-btns">
                             {isLoaded && sessionLinks}

@@ -5,7 +5,7 @@
     align-items: center;
     justify-content: space-between;
     border-bottom: .000005px solid #8DCAFF;
-    margin-bottom: 13em;
+    /* margin-bottom: 13em; */
     position: fixed;
     top: 0;
     background-color: white;
@@ -16,8 +16,10 @@
 .logo-img {
     max-width: 100px;
     border: none;
+    padding: 0;
     margin-left: 20px;
     position: relative;
+    border-radius: 20px;
 }
 
 .logo-img:hover {
@@ -33,7 +35,7 @@
 }
 
 #search-bar {
-    width: 50rem;
+    max-width: 50rem;
     color: #8DCAFF;
     padding: 0.5rem;
     font-size: 30px;
@@ -92,4 +94,53 @@
     display: flex;
     flex-direction: column;
    align-items: flex-end;
+}
+
+#find-the-extreme:hover {
+    box-shadow: none;
+    transform: none;
+}
+
+/* #new-rental-btn-container {
+    display: flex;
+    align-items: center;
+    box-shadow: none;
+    transform: none;
+}
+
+#new-rental-btn {
+    box-shadow: none;
+    transform: none;
+} */
+
+#new-rental-btn{
+    color: #8dcaff;
+    font-weight: bolder;
+    font-size: 25px;
+    text-shadow: -.5px 0 black, 0 .5px black, .5px 0 black, 0 -.5px black;
+    margin-right: 0;
+    padding: 5px;
+}
+
+#new-rental-btn:hover {
+    box-shadow: none;
+    transform: none;
+    text-align: center;
+}
+
+#new-rental-btn-container {
+    margin-right: 15px;
+    border-radius: 5px;
+}
+
+#new-rental-btn-container:hover {
+    box-shadow: 0 5px 15px #8DCAFF;
+    transform: scale(1.1);
+}
+
+#find-the-extreme-btn {
+    font-size: 60px;
+    color: #8dcaff;
+    font-weight: bolder;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }

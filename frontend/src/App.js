@@ -20,12 +20,15 @@ function App() {
 
   return (
     <>
+      <Switch>
+      <Route path="/" exact>
+        <SplashPage />
+      </Route>
       <Navigation isLoaded={isLoaded} />
+      </Switch>
       {isLoaded && (
+        <>
         <Switch>
-          <Route path="/" exact>
-            <SplashPage />
-          </Route>
           <Route path="/login">
             <LoginFormPage />
           </Route>
@@ -44,7 +47,8 @@ function App() {
           <Route path="/rentals/:id/edit">
             <EditRentalForm />
           </Route>
-        </Switch>
+      </Switch>
+        </>
       )}
     </>
   );

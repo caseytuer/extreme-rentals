@@ -4,8 +4,8 @@
     height: 100%;
     display: flex;
     justify-content: center;
-    align-items: center; 
-    margin-top: 400px;
+    position: absolute;
+    top: 40%;
 }
 
 .signup-container {
