@@ -1,15 +1,13 @@
 <p align='center'>
-  <img src='frontend/src/assets/unwined_logo_large.png' >
+  <img src="/Users/caseytuer/Desktop/extreme-rentals/frontend/src/assests/logo.png">
 </p>
 
-# Unwined
-Unwined is a wine rating App that assists users to discover and rate new wines. It is a fullstack React App made with a Redux state manager and a backend using Node/Express, Sequelize, and PostgresSQL. 
+# Extreme Rentals
+Extreme Rentals is a full stack application inspired by Airbnb created with Express/Sequelize for the backend and React/Redux for the frontend. It features an extensive user authentication process and provides a platform for users to post and review extreme things to rent. 
 
-* View the <a href='https://unwined-wine-app.herokuapp.com/'>Unwined</a> App Live
-* It is modeled after the <a href='https://untappd.com/'>Untappd</a> App
-* There are over 5k wines, 3k wineries and 300 wine types seeded in the database
+* View <a href='https://unwined-wine-app.herokuapp.com/'>Extreme Rentals</a> Live
 
-* Reference to the Unwined <a href='https://www.github.com/nicopierson/unwined/wiki'>Wiki Docs</a>
+* Reference to the Extreme Rentals <a href='https://github.com/caseytuer/extreme-rentals/wiki'>Wiki Docs</a>
 
 | Table of Contents |
 | ----------------- |
@@ -32,45 +30,22 @@ Unwined is a wine rating App that assists users to discover and rate new wines. 
 
 ## Features
 
-### Splash Page
-Unwined logo and features of site are shown
-![Splash Page](./readme_assets/splash_page.jpg)
+### Home Page
+Discover and search for new rentals
+![Rentals](./readme_assets/home.png)
+
+### Rental Page
+Rental Images, description, price, etc.
+![Rental Page](./readme_assets/rental.png)
 
 ### Sign In and Sign Up
-![Sign Up](./readme_assets/sign_up.jpg)
-![Sign In](./readme_assets/sign_in.jpg)
+![Sign Up](./readme_assets/signup.png)
+![Sign In](./readme_assets/signin.png)
 
-### Wine Detail
-Single wine details of name, wine type, price, review, etc.
-![Wine Detail](./readme_assets/wine_detail.png)
+### Reviews
+Users can add, edit, and delete reviews
+![Review](./readme_assets/reviews.png)
 
-### Edit Wine
-Edit a wine in the database
-![Edit Wine](./readme_assets/edit_wine.png)
-
-### Review
-Users can add reviews for a wine
-![Review](./readme_assets/review.png)
-
-### Review In Edit and Delete
-Edited Review is highlighted in blue with options to save or cancel changes 
-![Review Edit Delete](./readme_assets/review_edit.png)
-
-### Dashboard
-Discover and search for new wines, or add a new one
-![Dashboard](./readme_assets/dashboard.jpg)
-
-### Add Wine
-Add a new wine to the database
-![Add Wine](./readme_assets/add_wine.png)
-
-### Pagination
-Page 7 is highlighted and displays that subset of the wines
-![Pagination](./readme_assets/pagination.jpg)
-
-### Search Modal
-Modal renders search results below as user types input
-![Search Modal](./readme_assets/search_modal.png)
 
 ## Installation
 To build/run project locally, please follow these steps:
@@ -78,7 +53,7 @@ To build/run project locally, please follow these steps:
 1. Clone this repository
 
 ```javascript
-git clone https://github.com/nicopierson/unwined.git
+git clone https://github.com/caseytuer/extreme-rentals.git
 ```
 
 2. Install npm dependencies for both the `/frontend` and `/backend`
@@ -103,127 +78,3 @@ npx dotenv sequelize db:seed:all
 npm start
 ```
 
-## Technical Implementation Details
-
-### CSS Transitions
-The first goal was to find a method to dynamically unmount a component from an event e.g. click or an input change. After searching and experimenting, I discovered the `CSSTransition` component from the `react-transition-group` package. 
-
-First the state is declared and references are made:
-
-```javascript
-const [toggleForm, setToggleForm] = useState(false);
-const [ref, setRef] = useState(React.createRef());
-useEffect(() => {
-  setRef(React.createRef())
-}, [toggleForm]);
-```
-
-Then one `CSSTransition` component holds the `WineDetailPage`, and another the `WineForm` as a child. The `WineDetailPage` unmounts when a user clicks the `Edit` button, and afterwards the `WineForm` component mounts. These components will swap again when a user clicks the `Cancel` button in the `WineForm`. 
-
-Integrating these components with `Transition` components allow dynamic mounting based on a toggle state such as `toggleForm` shown below:
-
-```javascript
-return (
-    <>
-      <CSSTransition
-        in={!toggleForm}
-        timeout={800}
-        classNames='wine_detail'
-        nodeRef={ref}
-        unmountOnExit
-      >
-        <>
-          <WineDetailPage 
-            ref={ref}
-            setToggleForm={setToggleForm}
-          />
-          <CheckIn />
-        </>
-      </CSSTransition>
-      <CSSTransition
-        in={toggleForm}
-        timeout={800}
-        classNames='wine_edit_form'
-        unmountOnExit  
-        nodeRef={ref}
-      >
-        <WineForm 
-          ref={ref} 
-          setToggleForm={setToggleForm}
-          method={'PUT'}
-          title='Edit Wine'
-        />
-      </CSSTransition>
-    </>
-  );
-```
-
-### Search
-In order to access all of the wines, the search feature was vital. At first, I created separate routes accepting parameter variables to search based on name, rating, and price. Unfortunately, it became messy and hard to read. As a result, I opted to use a query string from the `useLocation` React hook instead of sending search parameters with `useParams` hook. 
-
-Below the route to query a wine from sequelize, uses the query string to extract variables for the search string, order, attribute, and page number:
-
-```javascript
-router.get(
-  '/',
-  asyncHandler(async (req, res, next) => {
-    let { search, page, attribute, order: orders } = req.query;
-    if (!page) page = 1;
-    const offset = limitPerPage * (page - 1);
-    let { where, order } = createQueryOptions(attribute, orders);
-    if (search) {
-      where = {
-        ...where,
-        name: {
-          [Op.iLike]: `%${search}%`
-        }
-      };
-    }
-    const wines = await Wine.findAndCountAll({
-      offset: offset,
-      limit: limitPerPage,
-      where: where ? where : {},
-      order: order ? order : [],
-    });
-    return res.json({ ...wines, offset })
-  })
-);
-```
-
-### Pagination
-It is also excessive to show more than 5k wines on a page, which can lead to excessive overhead and a slower response time. 
-
-In response, I created a Pagination component to calculate the offset number per page, and passed as a query string to the api route:
-
-```javascript
-const { search: searchString } = useLocation();
-let { attribute, order, search } = queryString.parse(searchString);
-if (!attribute) attribute = 'name';
-if (!order) order = 'desc'; 
-let numberOfPages = Math.ceil(numberOfResults / itemsPerPage);
-if (numberOfPages > pageLimit) numberOfPages = pageLimit;
-if (!numberOfPages) return null;
-const pageNumbers = [...Array(numberOfPages).keys()];
-```
-
-## Future Features
-
-1. __Feed Page__ - show most recent reviews
-
-2. __Favorite__ - like wines and add to feed page
-
-3. __Friends__ - add friends and display their reviews on feed page
-
-4. __Wineries__ - CRUD for wineries
-
-## Contact
-
-* [Email](mailto:nicogpt@gmail.com)
-* [LinkedIn](https://www.linkedin.com/in/nico-pierson/)
-* [AngelList]()
-* [Github](https://github.com/nicopierson)
-
-## Special Thanks
-* Fellow peers who have given me support and community: [Andrew](https://github.com/andru17urdna), [Henry](https://github.com/hnrywltn), [Pierre](https://github.com/TheGuilbotine), [Lema](https://github.com/lemlooma), [Meagan](https://github.com/meagan13), [Simon](https://github.com/Simonvargas), [Michelle](https://github.com/michellekontoff), and [John](https://github.com/Jomix-13)
-* Mentors who have given me their time and effort: [JD](https://github.com/jdrichardstech), [Peter](https://github.com/Lazytangent), [Thanh](https://github.com/tawnthanh), [William](https://github.com/WJVincent), and [Javier](https://github.com/javiermortiz) 
-* My partner: [Thayse](https://www.linkedin.com/in/thayse-alencar-946703196/)
