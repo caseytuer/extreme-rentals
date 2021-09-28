@@ -34,6 +34,7 @@ function Navigation({ isLoaded }) {
     }
 
     return (
+        <>
         <div id="navbar-ul-container">
             <ul>
                 <li>
@@ -56,6 +57,29 @@ function Navigation({ isLoaded }) {
                 </li>
             </ul>
         </div>
+            <div className="footer-container">
+
+                <div className="developer-links">
+                    Developer:
+                    <a href='https://github.com/caseytuer'>
+                        <i className='fab fa-github dev-link'></i>
+                    </a>
+                    <a href='https://www.linkedin.com/in/caseytuer/'>
+                        <i className='fab fa-linkedin dev-link'></i>
+                    </a>
+                    <a href='mailto:caseytuer@gmail.com'>
+                        <i class="far fa-envelope dev-link"></i>
+                    </a>
+                    {/* <a href="https://docs.google.com/document/d/19G2Hf9_OyJj0ctKjRYIPijYRTgtabvW38xY505J47q4/edit?usp=sharing" className="dev-link">Resume</a> */}
+                </div>
+                <div className="developer-links">
+                    Project: 
+                    <a href='https://github.com/caseytuer/extreme-rentals'>
+                        <i className='fab fa-github dev-link'></i>
+                    </a>
+                </div>
+            </div>
+        </>
     );
 }
 

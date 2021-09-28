@@ -1,14 +1,17 @@
 import { Link, NavLink } from 'react-router-dom';
+import logo from '../../assests/logo.png'
 import './SplashPage.css';
+
+const message = 'Welcome to extreme rentals, your one stop shop for renting and reviewing the extreme. Click the logo to enter, sign up or log in to post rentals and comments of your own.'
 
 const SplashPage = () => {
     return (
         <>
             <div id="splash-container">
                 <NavLink exact to="/home" >
-                    <img id="splash-logo" src="https://i.ibb.co/DQ5q7yH/logo.png" alt=""></img>
+                    <img id="splash-logo" src={logo} alt=""></img>
                 </NavLink>
-            <div className="welcome-text"></div>
+                <div className="splash-message">{message}</div>
             </div>
         </>
     )

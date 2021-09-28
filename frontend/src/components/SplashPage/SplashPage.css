@@ -36,6 +36,10 @@
 } */
 
 #splash-container {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: space-evenly;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -44,7 +48,7 @@
 }
 
 #splash-logo {
-    min-width: 100%;
+    min-width: 20%;
 }
 
 #splash-logo:hover {
@@ -52,5 +56,8 @@
     transform: scale(1.1);
 }
 
-.welcome-text {
+.splash-message {
+    width: 55%;
+    text-align: center;
+    font-weight: 900;
 }

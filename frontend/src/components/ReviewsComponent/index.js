@@ -100,7 +100,7 @@ const ReviewsComponent = () => {
         document.getElementById(`edit-comment-form-${targetNum}`).hidden = false;
         setEditCommentBox()
         const thisCommentInput = document.getElementById(`edit-comment-input-${targetNum}`)
-        thisCommentInput.placeholder = thisReviewBody.innerText;
+        thisCommentInput.value = thisReviewBody.innerText;
 
     }
 
@@ -120,7 +120,8 @@ const ReviewsComponent = () => {
     return (
         <>
             {sessionUser && 
-            <form  className="new-comment-form">
+            <form  className="new-comment-form"
+            onSubmit={handleSubmit}>
                 <input 
                     className="form-input"
                     id="review-input"
@@ -141,10 +142,10 @@ const ReviewsComponent = () => {
                         <div className="comments-card">
                             <div className="icon-and-name">
                                 <div>{commentUser?.username}</div>
-                                <img className="icon" src="https://thispersondoesnotexist.com/image" alt="icon"></img>
+                                <img className="icon" src="https://extreme-rentals.s3.us-west-1.amazonaws.com/imageedit_5_8587382554_adobespark.png"  alt="icon"></img>
                             </div>
-                            <div id={`review-body-${review.id}`} className="review-body">{review?.reviewBody}</div>
-                            {sessionUser && 
+                            <div id={`review-body-${review?.id}`} className="review-body">{review?.reviewBody}</div>
+                            {sessionUser?.id === review?.userId && 
                             <>
                                 <div className="edit-and-delete">
                                     <button className="form-btn"
@@ -164,12 +165,14 @@ const ReviewsComponent = () => {
                                     onSubmit={editComment}
                                     id={`edit-comment-form-${review.id}`} 
                                     hidden="true">
-                                    <input 
+                                    <textarea 
+                                    className="edit-comment-input"
                                     id={`edit-comment-input-${review.id}`}
                                     type="text"
                                     onChange={(e) => setEditCommentBox(e.target.value)}
                                     />
                                     <button
+                                    className="edit-comment-submit-btn"
                                         id={`edit-comment-submit-btn-${review.id}`}
                                         type="submit"
                                     >Submit</button>

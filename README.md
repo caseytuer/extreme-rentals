@@ -1,5 +1,5 @@
 <p align='center'>
-  <img src="/Users/caseytuer/Desktop/extreme-rentals/frontend/src/assests/logo.png">
+  <img src="frontend/assets/logo.png">
 </p>
 
 # Extreme Rentals

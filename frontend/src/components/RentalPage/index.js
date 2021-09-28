@@ -48,7 +48,7 @@ const RentalPage = () => {
 
 
     return (
-        <div>
+        <div className="rental-canvas">
             <div className="rental-img-container">
                 <img className="rental-img-main" alt="rental" src={currentImages[0]?.url}></img>
                 <div className="rental-img-main">
@@ -64,11 +64,13 @@ const RentalPage = () => {
                     <div className="description">{currentRental?.description}</div>
                 </div>
                 <div className="price-and-rating">
-                    <div>{`$${currentRental?.price} per day`}</div>
-                    <div>{'⭐️⭐️⭐️⭐️⭐️ Excellent'}</div>
-                    <div>{'Start Date → End Date'}</div>
-                    {accessUser? <button name="remove-btn" type="button" onClick={removeBtnHandler}>Remove Rental</button> :
-                    <button name="book-btn"type="submit" className="form-btn">Book</button>}
+                    <div>
+                        <a href="https://urentme.com//items/search_result" alt="">Want to rent this?</a>
+                    </div>
+                    {/* <div>{'Start Date → End Date'}</div> */}
+                    {accessUser? <button name="remove-btn" type="button" onClick={removeBtnHandler}>Remove Rental</button> : null
+                    // <button name="book-btn"type="submit" className="form-btn">Book</button> 
+                    }
                     {accessUser && <button name="edit-btn" type="submit" onClick={editBtnHandler}>Edit Rental</button>}
                 </div>
             </div>
