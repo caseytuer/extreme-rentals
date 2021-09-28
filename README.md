@@ -1,22 +1,13 @@
 <p align='center'>
-  <img src="frontend/assets/logo.png">
+  <img src="https://extreme-rentals.s3.us-west-1.amazonaws.com/Screen+Shot+2021-09-28+at+10.17.14+AM.png">
 </p>
 
 # Extreme Rentals
 Extreme Rentals is a full stack application inspired by Airbnb created with Express/Sequelize for the backend and React/Redux for the frontend. It features an extensive user authentication process and provides a platform for users to post and review extreme things to rent. 
 
-* View <a href='https://unwined-wine-app.herokuapp.com/'>Extreme Rentals</a> Live
+* View <a href='https://extreme-rentals.herokuapp.com/'>Extreme Rentals</a> Live
 
 * Reference to the Extreme Rentals <a href='https://github.com/caseytuer/extreme-rentals/wiki'>Wiki Docs</a>
-
-| Table of Contents |
-| ----------------- |
-| 1. [Features](#features) |
-| 2. [Installation](#installation) |
-| 3. [Technical Implementation Details](#technical-implementation-details) |
-| 4. [Future Features](#future-features) |
-| 5. [Contact](#contact) |
-| 6. [Special Thanks](#special-thanks) |
 
 ## Technologies
 * <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"><img src="https://img.shields.io/badge/-JavaScript-F7DF1E?logo=JavaScript&logoColor=333333" /></a>
